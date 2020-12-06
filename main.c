@@ -41,11 +41,11 @@ int main(){
 
             case 'E':
                 programExit();
-                printf("All account are closed, good bye\n");
+                printf("All accounts are closed, good bye\n");
                 exit=1;
                 break;
 
-            default: printf("invalid operation type\n");
+            default: printf("invalid operation type, please try again.\n");
 
           }
         }

@@ -9,8 +9,8 @@ double amount,interest_rate;
 void openAccount() {
       printf("Please insert amount for deposit: ");
       if(scanf("%lf", &amount)==1) {
-      if (amount<0) {
-        printf("\nsorry, can't deposite a negative amount, please try again\n");
+      if (amount<=0) {
+        printf("\nsorry, can't deposite a negative amount or 0, please try again\n");
         return;
       }
       for (int i = 0; i < count;) {
@@ -93,9 +93,9 @@ void closeAccount() {
 }
 
 void setInterest() {
-    printf("Please insert interest value: ");
+    printf("Please insert interest value greater than 0: ");
     if(scanf("%lf", &interest_rate)==1){
-      if(interest_rate<=100){
+      if(interest_rate > 0){
         double ir=(interest_rate/100) +1;
         for (int i = 0; i < 50; i++) {
           if (myBank[i][1]==1) {
@@ -104,7 +104,7 @@ void setInterest() {
           }
         }
       }
-      else{printf("interest_rate is not in the range\n");}
+      else{printf("\ninterest_rate is not in the range.\n");}
     }
 }
 
