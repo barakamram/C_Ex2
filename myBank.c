@@ -7,26 +7,21 @@ double myBank[50][2] = {0};
 int account_number;
 double amount,interest_rate;
 void openAccount() {
-    if (i>50) {
+    if (i>49) {
       printf("sorry, the bank is full, can't open anymore accounts.\n");
     }
 
     else {
-
       printf("Please insert amount for deposit: ");
       scanf("%lf", &amount);
       if (amount<0) {
         printf("sorry, can't deposite a negative amount, please try again\n");
         return;
       }
-      else{
-        if (i<50) {
-          i++;
-        }
-        myBank[i][0]=amount;
-        myBank[i][1]=1;
-        printf("Account number %d has been successfully opened \n", min+i);
-      }
+      i++;
+      myBank[i][0]=amount;
+      myBank[i][1]=1;
+      printf("Account number %d has been successfully opened \n", min+i);
     }
 }
 
@@ -38,7 +33,7 @@ void getBalance() {
     }
 
     else {
-      printf("invalid account number, please try again.\n");
+      printf("invalid account number.\n");
       return;
     }
 }
@@ -51,6 +46,10 @@ void deposit() {
       scanf("%lf", &amount);
       myBank[account_number-min][0] += amount;
       printf("your new balance is %.2f\n", myBank[account_number-min][0]);
+    }
+    else {
+      printf("invalid account number.\n");
+      return;
     }
 }
 
@@ -89,8 +88,8 @@ void closeAccount() {
 
 void setInterest() {
     printf("Please insert interest value: \n");
-    scanf("%.2f", &interest_rate);
-    double ir= 1 + (interest_rate/100);
+    scanf("%lf", &interest_rate);
+    double ir=(interest_rate/100) +1;
     for (int i = 0; i < 50; i++) {
       if (myBank[i][1]==1) {
         double amount = myBank[i][0];
